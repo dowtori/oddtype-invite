@@ -506,6 +506,10 @@
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                             "무탠뷰티 X 발을씻자 콜라보" 상세안내
                         </a>
+                        <a href="https://www.instagram.com/reels/DWh6hDekg0_/" target="_blank" class="btn-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                            "무신뷰티 히알루론산 캠페인" 레퍼런스
+                        </a>
                     </div>
                 </div>
 
@@ -600,7 +604,7 @@
                             <div class="indicator"></div>
                             <div>
                                 <div class="option-title" style="font-size: 0.95rem; color: var(--brand-secondary);">[필수] 캠페인 가이드 동의 및 개인정보 제공</div>
-                                <div class="option-desc">시작 전 안내된 캠페인별 노션 가이드 및 고료(50,000원) 조건을 확인했으며 이에 동의합니다.</div>
+                                <div class="option-desc">시작 전 안내된 캠페인별 노션 가이드 및 고료 조건을 확인했으며 이에 동의합니다.</div>
                             </div>
                         </div>
                     </label>
@@ -676,14 +680,37 @@
                 <p class="subtitle">시리아이는 인플루언서와의 장기적인 연계를 지향합니다.<br>향후 다른 종류의 좋은 캠페인이 있을 때 가장 먼저 연락받으시겠어요?</p>
                 
                 <div class="input-group" id="group-partnership">
-                    <label class="label-text">파트너십 풀 참여 <span class="text-accent">*</span></label>
-                    <select id="inf_partnership" class="form-control" required style="line-height: 1.4;">
-                        <option value="" disabled selected>참여 여부를 선택해 주세요</option>
-                        <option value="both">오드타입 다음 캠페인 우선 배정 + 전체 SIRIAI 제안 받기</option>
-                        <option value="oddtype_only">오드타입 브랜드의 다음 캠페인만 우선 제안 받기</option>
-                        <option value="none">이번 단일 캠페인에만 지원하기</option>
-                    </select>
-                    <div class="error-msg">해당 옵션을 선택해 주세요.</div>
+                    <label class="option-card" onclick="toggleAccordion('desc1')">
+                        <input type="checkbox" id="term_pool1">
+                        <div class="option-content" style="flex-wrap: wrap;">
+                            <div class="indicator"></div>
+                            <div style="flex:1;">
+                                <div class="option-title text-accent" style="font-size: 0.95rem;">[선택] 오드타입 차월(익월) 캠페인 사전 지원 동의</div>
+                            </div>
+                            <div style="color: var(--text-muted);">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px; height:16px;"><path d="M6 9l6 6 6-6"/></svg>
+                            </div>
+                            <div id="desc1" style="width: 100%; display: none; margin-top: 0.8rem; margin-left: calc(24px + 1.25rem); font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; padding-top: 0.8rem; border-top: 1px solid rgba(255,255,255,0.05);">
+                                이번 달 마감 시, 브랜드의 다른 무드나 신제품을 다루는 다음 캠페인에 우선적으로 응모하겠습니다.
+                            </div>
+                        </div>
+                    </label>
+
+                    <label class="option-card" onclick="toggleAccordion('desc2')">
+                        <input type="checkbox" id="term_pool2">
+                        <div class="option-content" style="flex-wrap: wrap;">
+                            <div class="indicator"></div>
+                            <div style="flex:1;">
+                                <div class="option-title text-accent" style="font-size: 0.95rem;">[선택] 무신사 PB 및 SIRIAI 파트너십 후보 풀 등록</div>
+                            </div>
+                            <div style="color: var(--text-muted);">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px; height:16px;"><path d="M6 9l6 6 6-6"/></svg>
+                            </div>
+                            <div id="desc2" style="width: 100%; display: none; margin-top: 0.8rem; margin-left: calc(24px + 1.25rem); font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; padding-top: 0.8rem; border-top: 1px solid rgba(255,255,255,0.05);">
+                                향후 SIRIAI가 운영하는 다국가/다양한 브랜드 캠페인 제안을 최우선적으로 받아보겠습니다.
+                            </div>
+                        </div>
+                    </label>
                 </div>
 
                 <div class="btn-wrapper">
@@ -780,13 +807,9 @@
                 }
             }
             else if (step === 4) {
-                const partnershipSelect = document.getElementById('inf_partnership');
-                if(!partnershipSelect.value) {
-                    document.getElementById('group-partnership').classList.add('has-error');
-                    isValid = false;
-                } else {
-                    document.getElementById('group-partnership').classList.remove('has-error');
-                }
+                const termPool1 = document.getElementById('term_pool1');
+                const termPool2 = document.getElementById('term_pool2');
+                // No validation needed since they are optional
             }
 
             return isValid;
@@ -824,7 +847,8 @@
                 inf_address: document.getElementById('inf_address').value,
                 inf_insta: document.getElementById('inf_insta').value,
                 inf_others: document.getElementById('inf_others').value,
-                partnership: document.getElementById('inf_partnership').value,
+                term_pool1: document.getElementById('term_pool1').checked,
+                term_pool2: document.getElementById('term_pool2').checked,
             };
             
             console.log("Submitting payload:", payload);
@@ -837,6 +861,14 @@
                 updateProgress();
                 window.scrollTo(0,0);
             }, 1200);
+        }
+        function toggleAccordion(id) {
+            const el = document.getElementById(id);
+            if (el.style.display === 'none') {
+                el.style.display = 'block';
+            } else {
+                el.style.display = 'none';
+            }
         }
     </script>
     <style>
