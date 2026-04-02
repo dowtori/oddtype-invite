@@ -3,39 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oddtype x Musinsa PB Campaign Recruitment</title>
+    <title>ODDTYPE x musinsa standard Beauty</title>
     <!-- Pretendard Font -->
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable.css" />
     <style>
         :root {
-            /* Brand Colors for Oddtype x Musinsa Standard (Light/Clean Theme) */
-            --brand-primary: #f43059; /* Oddtype Signature Pink */
-            --brand-secondary: #ff7799; 
-            --brand-black: #111111; /* Musinsa clean black */
+            /* Strictly Professional Black & White Theme */
+            --brand-primary: #111111; /* Musinsa Black */
+            --brand-accent: #e51a4c;  /* Signature Oddtype Red/Pink used sparingly */
             
             /* UI Colors (Light Theme) */
-            --bg-base: #f8f9fa; /* Very soft light gray */
-            --surface-glass: rgba(255, 255, 255, 0.9);
-            --surface-glass-hover: rgba(245, 245, 245, 0.9);
-            --border-glass: rgba(0, 0, 0, 0.08);
-            --border-focus: rgba(244, 48, 89, 0.4);
-            --text-primary: #1a1a1a;
+            --bg-base: #f4f5f7; 
+            --surface-glass: #ffffff;
+            --surface-glass-hover: #fafafa;
+            --border-glass: #e2e2e2;
+            --border-focus: #111111;
+            
+            --text-primary: #111111;
             --text-secondary: #555555;
-            --text-muted: #888888;
+            --text-muted: #999999;
             
             /* Spacing & Effects */
-            --radius-lg: 24px;
-            --radius-md: 12px;
-            --radius-sm: 8px;
-            --shadow-soft: 0 10px 30px rgba(0,0,0,0.04);
-            --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            --radius-lg: 16px;
+            --radius-md: 8px;
+            --radius-sm: 4px;
+            --shadow-soft: 0 4px 20px rgba(0,0,0,0.03);
+            --transition-smooth: all 0.25s ease-in-out;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', sans-serif;
+            font-family: 'Pretendard Variable', -apple-system, BlinkMacSystemFont, sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
 
@@ -46,51 +46,72 @@
             display: flex;
             flex-direction: column;
             overflow-x: hidden;
-            position: relative;
+            letter-spacing: -0.015em;
         }
 
-        /* Ambient Background */
-        .ambient-bg {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            z-index: -1;
-            overflow: hidden;
-            background: #ffffff;
-            background-image: radial-gradient(at 0% 0%, hsla(347,100%,76%,0.08) 0px, transparent 50%),
-                              radial-gradient(at 100% 100%, hsla(0,0%,85%,0.2) 0px, transparent 50%);
-        }
-
-        /* Hero Banner */
-        .hero-banner {
+        /* Banner Design */
+        .brand-banner {
             width: 100%;
-            height: 200px;
-            background-image: url('https://images.unsplash.com/photo-1620916297397-a4a5402a3c6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            height: 180px;
+            background-color: #111;
+            background-image: url('https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?q=80&w=2000&auto=format&fit=crop');
             background-size: cover;
-            background-position: center;
+            background-position: center 30%;
             position: relative;
-            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-            margin-bottom: -40px;
-            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .hero-banner::after {
+        
+        .brand-banner::before {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(255,255,255,1));
+            background: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.4));
+        }
+
+        .brand-logos {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: #fff;
+        }
+        
+        .logo-oddtype {
+            font-family: 'Times New Roman', Times, serif; /* Substitute for serious serif */
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+        
+        .logo-cross {
+            font-size: 0.9rem;
+            opacity: 0.6;
+            font-weight: 300;
+        }
+        
+        .logo-musinsa {
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            text-transform: lowercase;
         }
 
         /* Main Container */
         .app-container {
             flex: 1;
             display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            padding: 2rem 1rem;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem 4rem;
             width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
+            max-width: 560px;
+            margin: -30px auto 0; /* overlap banner */
             position: relative;
-            z-index: 10;
+            z-index: 20;
         }
 
         /* Step Management */
@@ -98,9 +119,9 @@
             display: none;
             width: 100%;
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(15px);
             transition: var(--transition-smooth);
-            animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         .form-step.active {
@@ -111,15 +132,13 @@
         }
 
         @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Glass Panel */
+        /* Panel */
         .glass-panel {
             background: var(--surface-glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--border-glass);
             border-radius: var(--radius-lg);
             padding: 2.5rem 2rem;
@@ -135,27 +154,25 @@
             border-radius: var(--radius-md);
             padding: 1.5rem;
             margin-bottom: 1.2rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            transition: var(--transition-smooth);
         }
         .info-card h3 {
             font-size: 1.05rem;
-            color: var(--brand-black);
+            color: var(--text-primary);
             margin-bottom: 0.8rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             font-weight: 700;
         }
+        
         .info-card ul {
             list-style: none;
             font-size: 0.9rem;
             color: var(--text-secondary);
             line-height: 1.6;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.5rem;
         }
         .info-card ul li::before {
             content: "•";
-            color: var(--brand-primary);
+            color: var(--brand-accent);
             font-weight: bold;
             display: inline-block; 
             width: 1em;
@@ -166,68 +183,75 @@
         .link-group {
             display: flex;
             flex-direction: column;
-            gap: 0.6rem;
+            gap: 0.5rem;
             margin-top: 1rem;
-            border-top: 1px solid var(--border-glass);
             padding-top: 1rem;
+            border-top: 1px solid #f0f0f0;
         }
         
         .btn-link {
             display: inline-flex;
             align-items: center;
             font-size: 0.85rem;
-            font-weight: 500;
+            font-weight: 600;
             color: var(--text-primary);
             text-decoration: none;
-            background: #f4f5f7;
+            background: #f8f8f8;
             padding: 0.7rem 1rem;
             border-radius: var(--radius-sm);
             transition: var(--transition-smooth);
         }
         .btn-link:hover {
-            background: rgba(244, 48, 89, 0.08);
-            color: var(--brand-primary);
+            background: #f0f0f0;
         }
         .btn-link svg {
-            width: 16px; height: 16px; margin-right: 8px; opacity: 0.8;
+            width: 16px; height: 16px; margin-right: 8px; opacity: 0.7;
         }
 
         /* Typography */
-        h1 {
-            font-size: 2rem;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            margin-bottom: 0.5rem;
-            color: var(--brand-black);
-        }
-
         h2 {
             font-size: 1.4rem;
             font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--brand-black);
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
             line-height: 1.4;
         }
 
         .subtitle {
             font-size: 0.95rem;
             color: var(--text-secondary);
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             line-height: 1.6;
             font-weight: 400;
+        }
+        
+        .subtitle-intro {
+            font-size: 1rem;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            text-align: center;
         }
 
         .label-text {
             display: block;
-            font-size: 0.95rem;
+            font-size: 0.938rem;
             font-weight: 600;
             margin-bottom: 0.6rem;
-            color: var(--brand-black);
+            color: var(--text-primary);
+        }
+        
+        .label-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: -0.3rem;
+            margin-bottom: 0.8rem;
+            display: block;
         }
 
         /* Form Inputs */
         .input-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             width: 100%;
         }
 
@@ -235,42 +259,42 @@
             width: 100%;
             background: #ffffff;
             border: 1px solid var(--border-glass);
-            border-radius: var(--radius-md);
-            padding: 1rem 1.25rem;
-            color: var(--brand-black);
+            border-radius: var(--radius-sm);
+            padding: 1rem 1.15rem;
+            color: var(--text-primary);
             font-size: 1rem;
             transition: var(--transition-smooth);
             outline: none;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.01);
         }
         
         select.form-control {
             appearance: none;
             background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23111111%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
             background-repeat: no-repeat;
-            background-position: right 1.2rem top 50%;
+            background-position: right 1.15rem top 50%;
             background-size: 0.65rem auto;
             cursor: pointer;
         }
 
         .form-control:focus {
-            border-color: var(--brand-primary);
-            box-shadow: 0 0 0 3px rgba(244, 48, 89, 0.15);
+            border-color: var(--border-focus);
+            box-shadow: 0 0 0 1px var(--border-focus);
         }
 
         .form-control::placeholder {
-            color: #b0b0b0;
+            color: #bbbbbb;
+            font-weight: 400;
         }
 
         textarea.form-control {
             resize: vertical;
-            min-height: 80px;
+            min-height: 90px;
         }
 
-        /* Options */
+        /* Option Cards (Radios/Checkboxes) */
         .option-card {
             display: block;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             cursor: pointer;
         }
 
@@ -280,28 +304,89 @@
 
         .option-content {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             background: #ffffff;
             border: 1px solid var(--border-glass);
             border-radius: var(--radius-md);
-            padding: 1.25rem 1.5rem;
+            padding: 1.25rem;
             transition: var(--transition-smooth);
         }
-
-        .option-content:hover {
-            border-color: rgba(0,0,0,0.2);
+        
+        .option-card input:not(:checked) + .option-content:hover {
+            border-color: #bbbbbb;
         }
 
         .option-card input:checked + .option-content {
-            background: rgba(244, 48, 89, 0.03);
             border-color: var(--brand-primary);
+            background: #ffffff;
+            box-shadow: 0 0 0 1px var(--brand-primary);
+        }
+
+        /* Radio Indicator */
+        .indicator-radio {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 1.5px solid #cccccc;
+            margin-right: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+            transition: var(--transition-smooth);
+        }
+
+        .option-card input[type="radio"]:checked + .option-content .indicator-radio {
+            border-color: var(--brand-primary);
+        }
+        .option-card input[type="radio"]:checked + .option-content .indicator-radio::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: var(--brand-primary);
+            border-radius: 50%;
+        }
+
+        /* Checkbox Indicator */
+        .indicator-check {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            border: 1.5px solid #cccccc;
+            margin-right: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+            transition: var(--transition-smooth);
+        }
+
+        .option-card input[type="checkbox"]:checked + .option-content .indicator-check {
+            background: var(--brand-primary);
+            border-color: var(--brand-primary);
+        }
+        .option-card input[type="checkbox"]:checked + .option-content .indicator-check::after {
+            content: '';
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+            margin-bottom: 2px;
+        }
+
+        .option-text-wrap {
+            flex: 1;
         }
 
         .option-title {
             font-weight: 600;
-            font-size: 1.05rem;
-            margin-bottom: 0.25rem;
-            color: var(--brand-black);
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+            color: var(--text-primary);
+            display: block;
         }
 
         .option-desc {
@@ -310,58 +395,17 @@
             line-height: 1.4;
         }
 
-        .indicator {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            border: 2px solid #dddddd;
-            margin-right: 1.25rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            transition: var(--transition-smooth);
-        }
-
-        .option-card input[type="radio"]:checked + .option-content .indicator {
-            border-color: var(--brand-primary);
-        }
-
-        .option-card input[type="radio"]:checked + .option-content .indicator::after {
-            content: '';
-            width: 12px;
-            height: 12px;
-            background: var(--brand-primary);
-            border-radius: 50%;
-        }
-
-        .option-card input[type="checkbox"] + .option-content .indicator {
-            border-radius: 6px;
-        }
-
-        .option-card input[type="checkbox"]:checked + .option-content .indicator {
-            background: var(--brand-primary);
-            border-color: var(--brand-primary);
-        }
-
-        .option-card input[type="checkbox"]:checked + .option-content .indicator::after {
-            content: '✓';
-            color: white;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
         /* Buttons */
         .btn-wrapper {
             display: flex;
             gap: 1rem;
-            margin-top: 2rem;
+            margin-top: 3rem;
             justify-content: flex-end;
         }
 
         .btn {
-            padding: 1rem 2rem;
-            border-radius: var(--radius-md);
+            padding: 1.1rem 2rem;
+            border-radius: var(--radius-sm);
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
@@ -374,35 +418,30 @@
         }
 
         .btn-primary {
-            background: var(--brand-black);
+            background: var(--brand-primary);
             color: white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             flex: 1;
         }
 
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            background: var(--brand-primary);
-            box-shadow: 0 8px 15px rgba(244, 48, 89, 0.2);
+        .btn-primary:active {
+            transform: scale(0.98);
         }
 
         .btn-secondary {
-            background: transparent;
-            color: var(--text-secondary);
-            border: 1px solid #cccccc;
+            background: #ffffff;
+            color: var(--text-primary);
+            border: 1px solid var(--border-glass);
         }
 
         .btn-secondary:hover {
-            color: var(--brand-black);
-            border-color: var(--brand-black);
-            background: #f8f9fa;
+            background: #f4f5f7;
         }
 
         /* Progress Bar */
         .progress-wrapper {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 4px;
-            background: rgba(0, 0, 0, 0.05);
+            top: 0; left: 0; width: 100%; height: 3px;
+            background: #eeeeee;
             z-index: 100;
         }
 
@@ -413,43 +452,62 @@
             transition: width 0.4s ease;
         }
 
-        /* Utilities */
-        .text-accent { color: var(--brand-primary); }
+        /* Error States */
         .error-msg {
-            color: #ff4d4d;
-            font-size: 0.85rem;
+            color: var(--brand-accent);
+            font-size: 0.825rem;
             margin-top: 0.5rem;
             display: none;
+            font-weight: 500;
         }
 
-        .has-error .form-control { border-color: #ff4d4d; }
+        .has-error .form-control { border-color: var(--brand-accent); }
         .has-error .error-msg { display: block; animation: fadeIn 0.3s; }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-5px); }
+            from { opacity: 0; transform: translateY(-3px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         /* Footer text */
         .footer-brand {
             text-align: center;
-            color: var(--text-muted);
-            font-size: 0.85rem;
+            color: #bbbbbb;
+            font-size: 0.8rem;
             line-height: 1.6;
             margin-top: 1rem;
         }
 
-        /* Dropdown/Accordion Customization */
+        /* Accordion Customization */
+        .accordion-item {
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-md);
+            margin-bottom: 0.8rem;
+            background: #ffffff;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+        
+        .accordion-item:focus-within {
+            border-color: #bbbbbb;
+        }
+
         .accordion-header {
             display: flex;
-            align-items: center;
-            width: 100%;
+            align-items: flex-start;
+            padding: 1.25rem;
+            cursor: pointer;
         }
+        
+        .accordion-header input {
+            display: none;
+        }
+
         .accordion-toggle-btn {
             background: transparent;
             border: none;
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -459,45 +517,55 @@
             color: var(--text-muted);
             transition: var(--transition-smooth);
         }
-        .accordion-toggle-btn:hover {
-            background: rgba(0,0,0,0.05);
-            color: var(--brand-black);
-        }
+        
         .accordion-toggle-btn.open {
             transform: rotate(180deg);
+        }
+
+        .accordion-body {
+            display: none;
+            padding: 0 1.25rem 1.25rem 3.25rem; /* Indent matching the checkbox */
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            border-top: 1px solid transparent;
         }
     </style>
 </head>
 <body>
 
-    <div class="ambient-bg"></div>
-
     <div class="progress-wrapper">
         <div class="progress-bar" id="progressBar"></div>
     </div>
 
-    <!-- Hero element for Step 0 -->
-    <div class="hero-banner" id="heroBanner"></div>
+    <!-- Hero element -->
+    <div class="brand-banner" id="heroBanner">
+        <div class="brand-logos">
+            <div class="logo-oddtype">ODDTYPE</div>
+            <div class="logo-cross">X</div>
+            <div class="logo-musinsa">musinsa standard</div>
+        </div>
+    </div>
 
     <div class="app-container">
+        
         <!-- STEP 0: Intro Component -->
-        <div class="form-step active" id="step-0" style="margin-top: 2rem;">
-            <h1 style="text-align: center;">Oddtype x Musinsa PB</h1>
-            <p class="subtitle" style="text-align: center; color: var(--brand-black); font-size: 1.05rem; font-weight: 500;">
-                정형화된 공식을 벗어난 무드, <span class="text-accent">오드타입</span>과 함께하는<br>
-                무신사 PB 뷰티 캠페인 크루 모집
-            </p>
+        <div class="form-step active" id="step-0" style="margin-top: 0.5rem;">
             
-            <div class="glass-panel">
-                <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 2rem; font-size: 0.95rem;">
-                    본 캠페인은 오드타입(Oddtype)을 비롯해, 감도 높은 뷰티를 제안하는 무신사 PB 브랜드 라인업과 함께합니다. <br><br>
-                    크리에이터님의 고유한 무드와 가장 잘 어울리는 제품군을 확인하시고, 하단의 상세 가이드라인을 먼저 살펴봐 주시기 바랍니다.
+            <div class="glass-panel" style="padding-top: 3rem;">
+                <p class="subtitle-intro">
+                    정형화된 공식을 벗어난 무드, <strong>오드타입</strong>과 함께하는<br>
+                    무신사 PB 뷰티 캠페인 크루 채용
+                </p>
+                
+                <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 2rem; font-size: 0.95rem; text-align: center;">
+                    크리에이터님의 고유한 분위기와 가장 잘 어울리는 제품군을 확인하시고, 상세 가이드라인을 먼저 살펴봐 주시기 바랍니다.
                 </p>
 
                 <div class="info-card">
-                    <h3>[ A 타입 ] 오드타입 (색조)</h3>
+                    <h3>[ A 타입 ] 오드타입 (ODDTYPE) 색조</h3>
                     <ul>
-                        <li>ODDTYPE 및 무신사PB 색조 제품 제공 (2~5만원 상당)</li>
+                        <li>오드타입 및 무신사 PB 색조 제품 (2~5만원 상당)</li>
                         <li>기본 고료 (50,000원)</li>
                     </ul>
                     <div class="link-group">
@@ -513,19 +581,19 @@
                 </div>
                 
                 <div class="info-card">
-                    <h3>[ B 타입 ] 무탠뷰티 (스킨케어)</h3>
+                    <h3>[ B 타입 ] 무탠뷰티 스킨케어</h3>
                     <ul>
-                        <li>무탠뷰티 및 무신사PB 스킨케어 제품 제공 (4~10만원 상당)</li>
+                        <li>무탠뷰티 및 무신사 PB 스킨케어 (4~10만원 상당)</li>
                         <li>기본 고료 (50,000원)</li>
                     </ul>
                     <div class="link-group">
                         <a href="https://www.notion.so/SIRIAI-X-26-1-3-2ea3b16910f0809bb35cd679a951b059?source=copy_link" target="_blank" class="btn-link">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                            "무탠뷰티 X 발을씻자 콜라보" 상세안내
+                            "무탠뷰티 X 발을씻자" 상세안내
                         </a>
                         <a href="https://www.instagram.com/reels/DWh6hDekg0_/" target="_blank" class="btn-link">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                            "무신뷰티 히알루론산 캠페인" 레퍼런스
+                            "히알루론산 캠페인" 레퍼런스
                         </a>
                     </div>
                 </div>
@@ -539,17 +607,17 @@
                     <div class="link-group">
                         <a href="https://www.notion.so/SIRIAI-26-C-3113b16910f08042bfdccf6a9dcbb5a6" target="_blank" class="btn-link">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                            "(신제품) 락시젤리 틴트" 상세안내
+                            "락시젤리 틴트" 상세안내
                         </a>
                         <a href="https://www.notion.so/SIRIAI-29-26-2-1-2f43b16910f08099aa33d1f7620356fe" target="_blank" class="btn-link">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                            "29어퍼스트로피 머들 디퓨저" 상세안내
+                            "머들 디퓨저" 상세안내
                         </a>
                     </div>
                 </div>
 
                 <button type="button" class="btn btn-primary" style="width: 100%; padding: 1.25rem;" onclick="nextStep()">
-                    안내를 확인했습니다. (지원 시작하기)
+                    안내 확인 완료 (지원 시작)
                 </button>
             </div>
             <div class="footer-brand">
@@ -560,17 +628,17 @@
         <!-- STEP 1: Campaign Selection -->
         <div class="form-step" id="step-1">
             <div class="glass-panel">
-                <h2>진행 캠페인 선택 <span class="text-accent">*</span></h2>
+                <h2>진행 캠페인 선택 <span style="color: var(--brand-accent);">*</span></h2>
                 <p class="subtitle">위 안내를 참고하여 진행을 원하시는 제품 카테고리를 선택해 주세요.</p>
                 
                 <div class="input-group" id="group-campaign">
                     <label class="option-card">
                         <input type="radio" name="campaign_type" value="A" required>
                         <div class="option-content">
-                            <div class="indicator"></div>
-                            <div>
-                                <div class="option-title">A 타입 (색조)만 희망</div>
-                                <div class="option-desc">오드타입 등 색조 브랜드 위주 배정 (스킨케어 등은 진행 불가)</div>
+                            <div class="indicator-radio"></div>
+                            <div class="option-text-wrap">
+                                <span class="option-title">A 타입 (색조)만 희망</span>
+                                <span class="option-desc">오드타입 등 색조 브랜드 위주 배정</span>
                             </div>
                         </div>
                     </label>
@@ -578,10 +646,10 @@
                     <label class="option-card">
                         <input type="radio" name="campaign_type" value="B">
                         <div class="option-content">
-                            <div class="indicator"></div>
-                            <div>
-                                <div class="option-title">B 타입 (스킨케어)만 희망</div>
-                                <div class="option-desc">무탠뷰티 등 스킨케어 브랜드 위주 배정</div>
+                            <div class="indicator-radio"></div>
+                            <div class="option-text-wrap">
+                                <span class="option-title">B 타입 (스킨케어)만 희망</span>
+                                <span class="option-desc">무탠뷰티 등 스킨케어 브랜드 위주 배정</span>
                             </div>
                         </div>
                     </label>
@@ -589,10 +657,10 @@
                     <label class="option-card">
                         <input type="radio" name="campaign_type" value="ALL">
                         <div class="option-content">
-                            <div class="indicator"></div>
-                            <div>
-                                <div class="option-title text-accent">캠페인 모두 지원 (우선 선별 대상)</div>
-                                <div class="option-desc">크리에이터님의 톤에 맞춰 가장 직관적인 캠페인에 유동적으로 배정해 드립니다.</div>
+                            <div class="indicator-radio"></div>
+                            <div class="option-text-wrap">
+                                <span class="option-title">캠페인 모두 지원 (우선 배정 대상)</span>
+                                <span class="option-desc">가장 잘 어울리는 캠페인에 유동적으로 배정해 드립니다.</span>
                             </div>
                         </div>
                     </label>
@@ -609,52 +677,52 @@
         <!-- STEP 2: Basic Info & Consent -->
         <div class="form-step" id="step-2">
             <div class="glass-panel">
-                <h2>크리에이터 정보 및 캠페인 동의</h2>
-                <p class="subtitle">제품 수령을 위한 기본 정보 확인 및 안내된 가이드라인 동의를 진행합니다.</p>
+                <h2>크리에이터 정보</h2>
+                <p class="subtitle">제품 발송 및 개별 연락을 위한 기본 정보를 기재해 주세요.</p>
                 
-                <div class="input-group" id="group-terms1" style="margin-bottom: 2rem;">
-                    <label class="option-card">
+                <div class="input-group" id="group-terms1" style="margin-bottom: 2.5rem;">
+                    <label class="option-card" style="margin: 0;">
                         <input type="checkbox" id="term_main" required>
-                        <div class="option-content" style="background: rgba(244, 48, 89, 0.03); border-color: rgba(244, 48, 89, 0.2);">
-                            <div class="indicator"></div>
-                            <div>
-                                <div class="option-title" style="font-size: 0.95rem; color: var(--brand-primary);">[필수] 캠페인 가이드 동의 및 개인정보 제공</div>
-                                <div class="option-desc">시작 전 안내된 캠페인별 노션 가이드 및 고료 조건을 확인했으며 이에 동의합니다.</div>
+                        <div class="option-content" style="background: #fafafa;">
+                            <div class="indicator-check"></div>
+                            <div class="option-text-wrap">
+                                <span class="option-title" style="margin-top:2px;">[필수] 연계 캠페인 운영 정책 동의</span>
+                                <span class="option-desc">안내된 캠페인별 가이드라인 및 고료 조건을 확인했으며, 이에 동의합니다.</span>
                             </div>
                         </div>
                     </label>
-                    <div class="error-msg" style="margin-left: 0.5rem;">가이드라인 리소스 확인 및 필수 항목에 동의해 주세요.</div>
+                    <div class="error-msg" style="margin-left: 0.5rem;">필수 동의 항목입니다.</div>
                 </div>
 
                 <div class="input-group" id="group-name">
-                    <label class="label-text">성함 (본명) <span class="text-accent">*</span></label>
-                    <input type="text" id="inf_name" class="form-control" placeholder="성함을 기재해 주세요" required>
+                    <label class="label-text">성함 (본명) <span style="color: var(--brand-accent);">*</span></label>
+                    <input type="text" id="inf_name" class="form-control" placeholder="홍길동" required>
                     <div class="error-msg">성함을 입력해 주세요.</div>
                 </div>
 
                 <div class="input-group" id="group-phone">
-                    <label class="label-text">전화번호 <span class="text-accent">*</span></label>
+                    <label class="label-text">전화번호 <span style="color: var(--brand-accent);">*</span></label>
                     <input type="tel" id="inf_phone" class="form-control" placeholder="010-0000-0000" required>
                     <div class="error-msg">연락처를 기재해 주세요.</div>
                 </div>
 
                 <div class="input-group" id="group-age">
-                    <label class="label-text">연령대 <span class="text-accent">*</span></label>
+                    <label class="label-text">연령대 <span style="color: var(--brand-accent);">*</span></label>
                     <select id="inf_age" class="form-control" required>
                         <option value="" disabled selected>연령대 선택</option>
                         <option value="10대">10대</option>
-                        <option value="20~29세">20~29세</option>
-                        <option value="30~39세">30~39세</option>
-                        <option value="40~49세">40~49세</option>
+                        <option value="20~29세">20대</option>
+                        <option value="30~39세">30대</option>
+                        <option value="40~49세">40대</option>
                         <option value="50대 이상">50대 이상</option>
                     </select>
                     <div class="error-msg">연령대를 선택해 주세요.</div>
                 </div>
 
-                <div class="input-group" id="group-address">
-                    <label class="label-text">배송지 주소 <span class="text-accent">*</span></label>
-                    <input type="text" id="inf_address" class="form-control" placeholder="우편번호 및 정확한 상세 주소를 기재해 주세요" required>
-                    <div class="error-msg">상세 주소를 정확히 기재해 주세요.</div>
+                <div class="input-group" id="group-address" style="margin-bottom: 0;">
+                    <label class="label-text">배송지 주소 <span style="color: var(--brand-accent);">*</span></label>
+                    <input type="text" id="inf_address" class="form-control" placeholder="우편번호와 상세 주소를 정확히 기재해 주세요" required>
+                    <div class="error-msg">상세 주소를 입력해 주세요.</div>
                 </div>
 
                 <div class="btn-wrapper">
@@ -667,23 +735,24 @@
         <!-- STEP 3: Channels -->
         <div class="form-step" id="step-3">
             <div class="glass-panel">
-                <h2>활동 채널 정보</h2>
-                <p class="subtitle">협업을 진행할 크리에이터님의 포트폴리오(채널)를 공유해 주세요.</p>
+                <h2>활동 채널 링크</h2>
+                <p class="subtitle">협업을 진행할 크리에이터님의 포트폴리오를 공유해 주세요.</p>
                 
                 <div class="input-group" id="group-insta">
-                    <label class="label-text">메인 인스타그램 링크 <span class="text-accent">*</span></label>
+                    <label class="label-text">대표 인스타그램 링크 <span style="color: var(--brand-accent);">*</span></label>
                     <input type="url" id="inf_insta" class="form-control" placeholder="https://instagram.com/아이디" required>
-                    <div class="error-msg">올바른 URL을 입력해 주세요.</div>
+                    <div class="error-msg">올바른 URL 형식(http/https)으로 입력해 주세요.</div>
                 </div>
 
-                <div class="input-group">
-                    <label class="label-text">기타 플랫폼 링크 (선택)</label>
-                    <textarea id="inf_others" class="form-control" placeholder="유튜브 채널, 틱톡, 혹은 블로그 주소 등 추가로 어필하고 싶으신 플랫폼이 있다면 적어주세요."></textarea>
+                <div class="input-group" style="margin-bottom: 0;">
+                    <label class="label-text">기타 플랫폼 (선택)</label>
+                    <span class="label-desc">유튜브 채널, 틱톡, 블로그 등 추가 검토를 원하시는 플랫폼</span>
+                    <textarea id="inf_others" class="form-control" placeholder="링크를 자유롭게 기재해 주세요."></textarea>
                 </div>
 
                 <div class="btn-wrapper">
                     <button type="button" class="btn btn-secondary" onclick="prevStep()">이전</button>
-                    <button type="button" class="btn btn-primary" onclick="nextStep()">향후 파트너십</button>
+                    <button type="button" class="btn btn-primary" onclick="nextStep()">다음으로</button>
                 </div>
             </div>
         </div>
@@ -691,41 +760,37 @@
         <!-- STEP 4: Partnership Option & Submit -->
         <div class="form-step" id="step-4">
             <div class="glass-panel">
-                <h2>SIRIAI 파트너십 안내</h2>
-                <p class="subtitle">시리아이는 크리에이터분들과의 장기적인 연계를 지향합니다.<br>향후 다른 종류의 캠페인이 있을 때 가장 먼저 연락받으시겠어요?</p>
+                <h2>SIRIAI 파트너십 구축</h2>
+                <p class="subtitle">시리아이는 크리에이터와의 지속적인 파트너십을 지향합니다.<br>이후 진행될 단독 캠페인 제안을 최우선으로 받아보시겠어요?</p>
                 
-                <div class="input-group" id="group-partnership">
+                <div class="input-group" id="group-partnership" style="margin-bottom: 0;">
                     
-                    <div class="option-card" style="cursor: default;">
-                        <label class="option-content" style="flex-wrap: wrap; cursor: pointer;">
+                    <div class="accordion-item">
+                        <label class="accordion-header">
                             <input type="checkbox" id="term_pool1">
-                            <div class="indicator"></div>
-                            <div class="accordion-header">
-                                <span class="option-title text-accent" style="font-size: 0.95rem; margin-bottom: 0;">[선택] 오드타입 다음 캠페인 우선 지원</span>
-                                <button type="button" class="accordion-toggle-btn" onclick="toggleAccordion(event, 'desc1', this)">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px; height:16px;"><path d="M6 9l6 6 6-6"/></svg>
-                                </button>
-                            </div>
-                            <div id="desc1" style="width: 100%; display: none; margin-top: 0.8rem; margin-left: calc(24px + 1.25rem); font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; padding-top: 0.8rem; border-top: 1px solid var(--border-glass);">
-                                이번 달 마감 시, 브랜드의 다른 무드나 신제품을 다루는 다음 캠페인에 우선적으로 응모하겠습니다.
-                            </div>
+                            <div class="indicator-check"></div>
+                            <span class="option-title" style="margin-top:1px;">오드타입 차월 신규 캠페인 등록</span>
+                            <button type="button" class="accordion-toggle-btn" onclick="toggleAccordion(event, 'desc1', this)" aria-label="설명 보기">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px; height:16px;"><path d="M6 9l6 6 6-6"/></svg>
+                            </button>
                         </label>
+                        <div id="desc1" class="accordion-body">
+                            이번 달 마감 시, 브랜드의 새로운 무드나 신제품을 다루는 다음 캠페인에 자동으로 사전 응모하겠습니다.
+                        </div>
                     </div>
 
-                    <div class="option-card" style="cursor: default;">
-                        <label class="option-content" style="flex-wrap: wrap; cursor: pointer;">
+                    <div class="accordion-item">
+                        <label class="accordion-header">
                             <input type="checkbox" id="term_pool2">
-                            <div class="indicator"></div>
-                            <div class="accordion-header">
-                                <span class="option-title text-accent" style="font-size: 0.95rem; margin-bottom: 0;">[선택] 무신사 PB 및 SIRIAI 후보 풀 등록</span>
-                                <button type="button" class="accordion-toggle-btn" onclick="toggleAccordion(event, 'desc2', this)">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px; height:16px;"><path d="M6 9l6 6 6-6"/></svg>
-                                </button>
-                            </div>
-                            <div id="desc2" style="width: 100%; display: none; margin-top: 0.8rem; margin-left: calc(24px + 1.25rem); font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; padding-top: 0.8rem; border-top: 1px solid var(--border-glass);">
-                                향후 SIRIAI가 운영하는 다국가/다양한 브랜드 캠페인 제안을 최우선적으로 받아보겠습니다.
-                            </div>
+                            <div class="indicator-check"></div>
+                            <span class="option-title" style="margin-top:1px;">무신사 PB 및 전체 협업 풀 등록</span>
+                            <button type="button" class="accordion-toggle-btn" onclick="toggleAccordion(event, 'desc2', this)" aria-label="설명 보기">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px; height:16px;"><path d="M6 9l6 6 6-6"/></svg>
+                            </button>
                         </label>
+                        <div id="desc2" class="accordion-body">
+                            향후 SIRIAI가 운영하는 다국적/다양한 브랜드 캠페인 제안을 최우선적으로 받아보겠습니다.
+                        </div>
                     </div>
 
                 </div>
@@ -743,17 +808,17 @@
         <!-- STEP 5: Success -->
         <div class="form-step" id="step-5">
             <div class="glass-panel" style="text-align: center; padding: 4rem 2rem;">
-                <div class="success-icon-wrapper" style="width: 80px; height: 80px; border-radius: 50%; background: rgba(244, 48, 89, 0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; color: var(--brand-primary);">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 40px; height: 40px;">
+                <div style="width: 70px; height: 70px; border-radius: 50%; background: #111; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; color: #fff;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 34px; height: 34px;">
                         <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
                 </div>
-                <h2 style="font-size: 1.8rem; margin-bottom: 1rem;">지원이 완료되었습니다!</h2>
-                <p class="subtitle" style="margin-bottom: 2rem;">
+                <h2 style="font-size: 1.6rem; margin-bottom: 1rem;">지원이 완료되었습니다</h2>
+                <p class="subtitle" style="margin-bottom: 2.5rem;">
                     캠페인 크루로 지원해주셔서 대단히 감사합니다.<br>
-                    지원해 주신 채널의 감도를 확인한 후, 브랜드 핏이 맞는 크리에이터 분들께 개별 DM으로 우선 연락드리겠습니다.
+                    브랜드 핏이 맞는 크리에이터 분들께 개별 DM으로 최우선 연락드리겠습니다.
                 </p>
-                <button class="btn btn-secondary" onclick="location.reload();">처음으로 돌아가기</button>
+                <button class="btn btn-secondary" style="width: 100%;" onclick="location.reload();">처음으로 돌아가기</button>
             </div>
             <div class="footer-brand">
                 Presented by SIRIAI
@@ -771,28 +836,42 @@
             const progressBar = document.getElementById('progressBar');
             if(currentStep === 0) {
                 progressBar.style.width = '0%';
-                document.getElementById('heroBanner').style.display = 'block';
+                if(document.getElementById('heroBanner')) document.getElementById('heroBanner').style.display = 'flex';
             } else if (currentStep >= totalSteps) {
                 progressBar.style.width = '100%';
-                document.getElementById('heroBanner').style.display = 'none';
+                if(document.getElementById('heroBanner')) document.getElementById('heroBanner').style.display = 'none';
             } else {
                 const percentage = (currentStep / (totalSteps - 1)) * 100;
                 progressBar.style.width = percentage + '%';
-                document.getElementById('heroBanner').style.display = 'none';
+                if(document.getElementById('heroBanner')) document.getElementById('heroBanner').style.display = 'none';
             }
         }
 
         function toggleAccordion(e, id, btn) {
             e.preventDefault(); // Prevent checkbox toggle when clicking the arrow button specifically
             const el = document.getElementById(id);
-            if (el.style.display === 'none') {
-                el.style.display = 'block';
-                btn.classList.add('open');
-            } else {
+            if (el.style.display === 'block') {
                 el.style.display = 'none';
                 btn.classList.remove('open');
+            } else {
+                el.style.display = 'block';
+                btn.classList.add('open');
             }
         }
+
+        // Make checkbox toggle also open/close the accordion automatically occasionally or simply highlight it
+        document.querySelectorAll('.accordion-header input').forEach(inp => {
+            inp.addEventListener('change', function() {
+                const accordionItem = this.closest('.accordion-item');
+                if (this.checked) {
+                    accordionItem.style.borderColor = 'var(--brand-primary)';
+                    accordionItem.style.boxShadow = '0 0 0 1px var(--brand-primary)';
+                } else {
+                    accordionItem.style.borderColor = 'var(--border-glass)';
+                    accordionItem.style.boxShadow = 'none';
+                }
+            });
+        });
 
         function validateStep(step) {
             let isValid = true;
@@ -838,10 +917,6 @@
                     document.getElementById('group-insta').classList.remove('has-error');
                 }
             }
-            else if (step === 4) {
-                // No validation needed since they are optional
-            }
-
             return isValid;
         }
 
@@ -851,7 +926,7 @@
             currentStep++;
             document.getElementById(`step-${currentStep}`).classList.add('active');
             updateProgress();
-            window.scrollTo(0,0);
+            window.scrollTo(0, 0);
         }
 
         function prevStep() {
@@ -859,14 +934,14 @@
             currentStep--;
             document.getElementById(`step-${currentStep}`).classList.add('active');
             updateProgress();
-            window.scrollTo(0,0);
+            window.scrollTo(0, 0);
         }
 
         function submitForm() {
             if (!validateStep(4)) return;
 
             const btn = document.getElementById('submitBtn');
-            btn.innerHTML = `처리중... <svg style="animation: spin 1s linear infinite; margin-left:8px; width:16px; height:16px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
+            btn.innerHTML = `처리중... <svg style="animation: spin 1s linear infinite; margin-left:8px; width:16px; height:16px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
             btn.style.pointerEvents = 'none';
 
             const payload = {
