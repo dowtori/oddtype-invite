@@ -743,6 +743,12 @@
                     <div class="error-msg">성함을 입력해 주세요.</div>
                 </div>
 
+                <div class="input-group" id="group-email">
+                    <label class="label-text">이메일 주소 <span style="color: var(--brand-accent);">*</span></label>
+                    <input type="email" id="inf_email" class="form-control" placeholder="example@email.com" required>
+                    <div class="error-msg">정확한 이메일 주소를 입력해 주세요.</div>
+                </div>
+
                 <div class="input-group" id="group-phone">
                     <label class="label-text">전화번호 <span style="color: var(--brand-accent);">*</span></label>
                     <input type="tel" id="inf_phone" class="form-control" placeholder="010-0000-0000" required>
@@ -981,9 +987,9 @@
                     document.getElementById('group-terms1').classList.remove('has-error');
                 }
 
-                ['inf_name', 'inf_phone', 'inf_age', 'inf_address'].forEach(id => {
+                ['inf_name', 'inf_email', 'inf_phone', 'inf_age', 'inf_address'].forEach(id => {
                     const el = document.getElementById(id);
-                    if(!el.value.trim()) {
+                    if(!el.value.trim() || (id === 'inf_email' && !el.value.includes('@'))) {
                         document.getElementById('group-' + id.split('_')[1]).classList.add('has-error');
                         isValid = false;
                     } else {
@@ -1030,6 +1036,7 @@
             const payload = {
                 campaign_type: document.querySelector('input[name="campaign_type"]:checked').value,
                 inf_name: document.getElementById('inf_name').value,
+                inf_email: document.getElementById('inf_email').value,
                 inf_phone: document.getElementById('inf_phone').value,
                 inf_age: document.getElementById('inf_age').value,
                 inf_address: document.getElementById('inf_address').value,
