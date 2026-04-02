@@ -8,32 +8,35 @@
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable.css" />
     <style>
         :root {
-            /* Brand Colors for Oddtype */
-            --brand-primary: #ff3366; 
+            /* Brand Colors for Oddtype x Musinsa Standard (Light/Clean Theme) */
+            --brand-primary: #f43059; /* Oddtype Signature Pink */
             --brand-secondary: #ff7799; 
-            --brand-accent: #9933ff; 
+            --brand-black: #111111; /* Musinsa clean black */
             
-            /* UI Colors (Dark Theme) */
-            --bg-base: #0a0a0a;
-            --surface-glass: rgba(255, 255, 255, 0.05);
-            --surface-glass-hover: rgba(255, 255, 255, 0.1);
-            --border-glass: rgba(255, 255, 255, 0.1);
-            --text-primary: #ffffff;
-            --text-secondary: #a0a0a0;
-            --text-muted: #666666;
+            /* UI Colors (Light Theme) */
+            --bg-base: #f8f9fa; /* Very soft light gray */
+            --surface-glass: rgba(255, 255, 255, 0.9);
+            --surface-glass-hover: rgba(245, 245, 245, 0.9);
+            --border-glass: rgba(0, 0, 0, 0.08);
+            --border-focus: rgba(244, 48, 89, 0.4);
+            --text-primary: #1a1a1a;
+            --text-secondary: #555555;
+            --text-muted: #888888;
             
             /* Spacing & Effects */
             --radius-lg: 24px;
-            --radius-md: 16px;
+            --radius-md: 12px;
             --radius-sm: 8px;
-            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --shadow-soft: 0 10px 30px rgba(0,0,0,0.04);
+            --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+            font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -46,52 +49,48 @@
             position: relative;
         }
 
-        /* Ambient Glow Background */
+        /* Ambient Background */
         .ambient-bg {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
             z-index: -1;
             overflow: hidden;
-            background: linear-gradient(to bottom right, #000000, #111111);
-        }
-        
-        .glow-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.6;
-            animation: float 20s infinite ease-in-out alternate;
-        }
-        
-        .orb-1 {
-            width: 400px; height: 400px;
-            background: rgba(255, 51, 102, 0.3);
-            top: -100px; left: -100px;
-        }
-        
-        .orb-2 {
-            width: 500px; height: 500px;
-            background: rgba(153, 51, 255, 0.2);
-            bottom: -200px; right: -100px;
-            animation-delay: -5s;
+            background: #ffffff;
+            background-image: radial-gradient(at 0% 0%, hsla(347,100%,76%,0.08) 0px, transparent 50%),
+                              radial-gradient(at 100% 100%, hsla(0,0%,85%,0.2) 0px, transparent 50%);
         }
 
-        @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(50px, 30px) scale(1.1); }
+        /* Hero Banner */
+        .hero-banner {
+            width: 100%;
+            height: 200px;
+            background-image: url('https://images.unsplash.com/photo-1620916297397-a4a5402a3c6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+            margin-bottom: -40px;
+            overflow: hidden;
+        }
+        .hero-banner::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(255,255,255,1));
         }
 
         /* Main Container */
         .app-container {
             flex: 1;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
             padding: 2rem 1rem;
             width: 100%;
             max-width: 600px;
             margin: 0 auto;
             position: relative;
+            z-index: 10;
         }
 
         /* Step Management */
@@ -125,31 +124,33 @@
             border-radius: var(--radius-lg);
             padding: 2.5rem 2rem;
             width: 100%;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            box-shadow: var(--shadow-soft);
             margin-bottom: 2rem;
         }
         
         /* Information Card inside Panel */
         .info-card {
-            background: rgba(0, 0, 0, 0.4);
+            background: #ffffff;
             border: 1px solid var(--border-glass);
             border-radius: var(--radius-md);
-            padding: 1.2rem;
+            padding: 1.5rem;
             margin-bottom: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
         }
         .info-card h3 {
             font-size: 1.05rem;
-            color: var(--brand-secondary);
-            margin-bottom: 0.5rem;
+            color: var(--brand-black);
+            margin-bottom: 0.8rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            font-weight: 700;
         }
         .info-card ul {
             list-style: none;
             font-size: 0.9rem;
             color: var(--text-secondary);
-            line-height: 1.5;
+            line-height: 1.6;
             margin-bottom: 0.8rem;
         }
         .info-card ul li::before {
@@ -165,52 +166,51 @@
         .link-group {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
-            margin-top: 0.8rem;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding-top: 0.8rem;
+            gap: 0.6rem;
+            margin-top: 1rem;
+            border-top: 1px solid var(--border-glass);
+            padding-top: 1rem;
         }
         
         .btn-link {
             display: inline-flex;
             align-items: center;
             font-size: 0.85rem;
+            font-weight: 500;
             color: var(--text-primary);
             text-decoration: none;
-            background: rgba(255,255,255,0.05);
-            padding: 0.6rem 0.8rem;
-            border-radius: 6px;
+            background: #f4f5f7;
+            padding: 0.7rem 1rem;
+            border-radius: var(--radius-sm);
             transition: var(--transition-smooth);
         }
         .btn-link:hover {
-            background: rgba(255, 51, 102, 0.15);
-            color: var(--brand-secondary);
+            background: rgba(244, 48, 89, 0.08);
+            color: var(--brand-primary);
         }
         .btn-link svg {
-            width: 14px; height: 14px; margin-right: 6px; opacity: 0.8;
+            width: 16px; height: 16px; margin-right: 8px; opacity: 0.8;
         }
 
         /* Typography */
         h1 {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 800;
             letter-spacing: -0.02em;
             margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, #fff 0%, #ff7799 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--brand-black);
         }
 
         h2 {
             font-size: 1.4rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
-            color: var(--text-primary);
+            color: var(--brand-black);
             line-height: 1.4;
         }
 
         .subtitle {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--text-secondary);
             margin-bottom: 2rem;
             line-height: 1.6;
@@ -220,9 +220,9 @@
         .label-text {
             display: block;
             font-size: 0.95rem;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-            color: var(--text-secondary);
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            color: var(--brand-black);
         }
 
         /* Form Inputs */
@@ -233,37 +233,33 @@
 
         .form-control {
             width: 100%;
-            background: rgba(0, 0, 0, 0.4);
+            background: #ffffff;
             border: 1px solid var(--border-glass);
             border-radius: var(--radius-md);
             padding: 1rem 1.25rem;
-            color: var(--text-primary);
+            color: var(--brand-black);
             font-size: 1rem;
             transition: var(--transition-smooth);
             outline: none;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.01);
         }
         
         select.form-control {
             appearance: none;
-            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23ffffff%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23111111%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
             background-repeat: no-repeat;
-            background-position: right 1rem top 50%;
+            background-position: right 1.2rem top 50%;
             background-size: 0.65rem auto;
             cursor: pointer;
-        }
-        select.form-control option {
-            background-color: var(--bg-base);
-            color: var(--text-primary);
         }
 
         .form-control:focus {
             border-color: var(--brand-primary);
-            box-shadow: 0 0 0 2px rgba(255, 51, 102, 0.2);
-            background: rgba(0, 0, 0, 0.6);
+            box-shadow: 0 0 0 3px rgba(244, 48, 89, 0.15);
         }
 
         .form-control::placeholder {
-            color: var(--text-muted);
+            color: #b0b0b0;
         }
 
         textarea.form-control {
@@ -285,7 +281,7 @@
         .option-content {
             display: flex;
             align-items: center;
-            background: rgba(0, 0, 0, 0.3);
+            background: #ffffff;
             border: 1px solid var(--border-glass);
             border-radius: var(--radius-md);
             padding: 1.25rem 1.5rem;
@@ -293,20 +289,19 @@
         }
 
         .option-content:hover {
-            background: var(--surface-glass-hover);
+            border-color: rgba(0,0,0,0.2);
         }
 
         .option-card input:checked + .option-content {
-            background: rgba(255, 51, 102, 0.1);
+            background: rgba(244, 48, 89, 0.03);
             border-color: var(--brand-primary);
-            box-shadow: inset 0 0 0 1px var(--brand-primary);
         }
 
         .option-title {
             font-weight: 600;
             font-size: 1.05rem;
             margin-bottom: 0.25rem;
-            color: var(--text-primary);
+            color: var(--brand-black);
         }
 
         .option-desc {
@@ -319,7 +314,7 @@
             width: 24px;
             height: 24px;
             border-radius: 50%;
-            border: 2px solid var(--text-muted);
+            border: 2px solid #dddddd;
             margin-right: 1.25rem;
             display: flex;
             align-items: center;
@@ -347,7 +342,6 @@
         .option-card input[type="checkbox"]:checked + .option-content .indicator {
             background: var(--brand-primary);
             border-color: var(--brand-primary);
-            position: relative;
         }
 
         .option-card input[type="checkbox"]:checked + .option-content .indicator::after {
@@ -380,34 +374,35 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--brand-primary) 0%, #ff1a4d 100%);
+            background: var(--brand-black);
             color: white;
-            box-shadow: 0 4px 15px rgba(255, 51, 102, 0.4);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             flex: 1;
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255, 51, 102, 0.5);
+            background: var(--brand-primary);
+            box-shadow: 0 8px 15px rgba(244, 48, 89, 0.2);
         }
 
         .btn-secondary {
             background: transparent;
             color: var(--text-secondary);
-            border: 1px solid var(--text-muted);
+            border: 1px solid #cccccc;
         }
 
         .btn-secondary:hover {
-            color: var(--text-primary);
-            border-color: var(--text-secondary);
-            background: rgba(255, 255, 255, 0.05);
+            color: var(--brand-black);
+            border-color: var(--brand-black);
+            background: #f8f9fa;
         }
 
         /* Progress Bar */
         .progress-wrapper {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 4px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.05);
             z-index: 100;
         }
 
@@ -416,7 +411,6 @@
             background: var(--brand-primary);
             width: 0%;
             transition: width 0.4s ease;
-            box-shadow: 0 0 10px var(--brand-primary);
         }
 
         /* Utilities */
@@ -432,8 +426,8 @@
         .has-error .error-msg { display: block; animation: fadeIn 0.3s; }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Footer text */
@@ -444,39 +438,64 @@
             line-height: 1.6;
             margin-top: 1rem;
         }
+
+        /* Dropdown/Accordion Customization */
+        .accordion-header {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+        .accordion-toggle-btn {
+            background: transparent;
+            border: none;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 50%;
+            margin-left: auto;
+            color: var(--text-muted);
+            transition: var(--transition-smooth);
+        }
+        .accordion-toggle-btn:hover {
+            background: rgba(0,0,0,0.05);
+            color: var(--brand-black);
+        }
+        .accordion-toggle-btn.open {
+            transform: rotate(180deg);
+        }
     </style>
 </head>
 <body>
 
-    <div class="ambient-bg">
-        <div class="glow-orb orb-1"></div>
-        <div class="glow-orb orb-2"></div>
-    </div>
+    <div class="ambient-bg"></div>
 
     <div class="progress-wrapper">
         <div class="progress-bar" id="progressBar"></div>
     </div>
 
+    <!-- Hero element for Step 0 -->
+    <div class="hero-banner" id="heroBanner"></div>
+
     <div class="app-container">
-        
         <!-- STEP 0: Intro Component -->
-        <div class="form-step active" id="step-0">
-            <h1 style="text-align: center; font-size: 2.2rem; margin-bottom: 0.5rem;">Oddtype x Musinsa PB</h1>
-            <p class="subtitle" style="text-align: center; color: var(--text-primary); font-size: 1.1rem; font-weight: 500;">
+        <div class="form-step active" id="step-0" style="margin-top: 2rem;">
+            <h1 style="text-align: center;">Oddtype x Musinsa PB</h1>
+            <p class="subtitle" style="text-align: center; color: var(--brand-black); font-size: 1.05rem; font-weight: 500;">
                 정형화된 공식을 벗어난 무드, <span class="text-accent">오드타입</span>과 함께하는<br>
                 무신사 PB 뷰티 캠페인 크루 모집
             </p>
             
             <div class="glass-panel">
-                <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.8rem; font-size: 0.95rem;">
+                <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 2rem; font-size: 0.95rem;">
                     본 캠페인은 오드타입(Oddtype)을 비롯해, 감도 높은 뷰티를 제안하는 무신사 PB 브랜드 라인업과 함께합니다. <br><br>
                     크리에이터님의 고유한 무드와 가장 잘 어울리는 제품군을 확인하시고, 하단의 상세 가이드라인을 먼저 살펴봐 주시기 바랍니다.
                 </p>
 
                 <div class="info-card">
-                    <h3>
-                        <span>[ A 타입 ] 오드타입 (색조)</span>
-                    </h3>
+                    <h3>[ A 타입 ] 오드타입 (색조)</h3>
                     <ul>
                         <li>ODDTYPE 및 무신사PB 색조 제품 제공 (2~5만원 상당)</li>
                         <li>기본 고료 (50,000원)</li>
@@ -494,9 +513,7 @@
                 </div>
                 
                 <div class="info-card">
-                    <h3>
-                        <span>[ B 타입 ] 무탠뷰티 (스킨케어)</span>
-                    </h3>
+                    <h3>[ B 타입 ] 무탠뷰티 (스킨케어)</h3>
                     <ul>
                         <li>무탠뷰티 및 무신사PB 스킨케어 제품 제공 (4~10만원 상당)</li>
                         <li>기본 고료 (50,000원)</li>
@@ -514,9 +531,7 @@
                 </div>
 
                 <div class="info-card" style="margin-bottom: 2rem;">
-                    <h3>
-                        <span>[ C 타입 ] 무신사 신규 PB 라인</span>
-                    </h3>
+                    <h3>[ C 타입 ] 무신사 신규 PB 라인</h3>
                     <ul>
                         <li>위찌(WHIZZY), 노더럽 등 신상 라인 (2~6만원 상당)</li>
                         <li>기본 고료 (50,000원)</li>
@@ -600,10 +615,10 @@
                 <div class="input-group" id="group-terms1" style="margin-bottom: 2rem;">
                     <label class="option-card">
                         <input type="checkbox" id="term_main" required>
-                        <div class="option-content" style="background: rgba(255, 51, 102, 0.05); border-color: rgba(255, 51, 102, 0.2);">
+                        <div class="option-content" style="background: rgba(244, 48, 89, 0.03); border-color: rgba(244, 48, 89, 0.2);">
                             <div class="indicator"></div>
                             <div>
-                                <div class="option-title" style="font-size: 0.95rem; color: var(--brand-secondary);">[필수] 캠페인 가이드 동의 및 개인정보 제공</div>
+                                <div class="option-title" style="font-size: 0.95rem; color: var(--brand-primary);">[필수] 캠페인 가이드 동의 및 개인정보 제공</div>
                                 <div class="option-desc">시작 전 안내된 캠페인별 노션 가이드 및 고료 조건을 확인했으며 이에 동의합니다.</div>
                             </div>
                         </div>
@@ -676,41 +691,43 @@
         <!-- STEP 4: Partnership Option & Submit -->
         <div class="form-step" id="step-4">
             <div class="glass-panel">
-                <h2>SIRIAI 파트너십 구조 등록</h2>
-                <p class="subtitle">시리아이는 인플루언서와의 장기적인 연계를 지향합니다.<br>향후 다른 종류의 좋은 캠페인이 있을 때 가장 먼저 연락받으시겠어요?</p>
+                <h2>SIRIAI 파트너십 안내</h2>
+                <p class="subtitle">시리아이는 크리에이터분들과의 장기적인 연계를 지향합니다.<br>향후 다른 종류의 캠페인이 있을 때 가장 먼저 연락받으시겠어요?</p>
                 
                 <div class="input-group" id="group-partnership">
-                    <label class="option-card" onclick="toggleAccordion('desc1')">
-                        <input type="checkbox" id="term_pool1">
-                        <div class="option-content" style="flex-wrap: wrap;">
+                    
+                    <div class="option-card" style="cursor: default;">
+                        <label class="option-content" style="flex-wrap: wrap; cursor: pointer;">
+                            <input type="checkbox" id="term_pool1">
                             <div class="indicator"></div>
-                            <div style="flex:1;">
-                                <div class="option-title text-accent" style="font-size: 0.95rem;">[선택] 오드타입 차월(익월) 캠페인 사전 지원 동의</div>
+                            <div class="accordion-header">
+                                <span class="option-title text-accent" style="font-size: 0.95rem; margin-bottom: 0;">[선택] 오드타입 다음 캠페인 우선 지원</span>
+                                <button type="button" class="accordion-toggle-btn" onclick="toggleAccordion(event, 'desc1', this)">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px; height:16px;"><path d="M6 9l6 6 6-6"/></svg>
+                                </button>
                             </div>
-                            <div style="color: var(--text-muted);">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px; height:16px;"><path d="M6 9l6 6 6-6"/></svg>
-                            </div>
-                            <div id="desc1" style="width: 100%; display: none; margin-top: 0.8rem; margin-left: calc(24px + 1.25rem); font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; padding-top: 0.8rem; border-top: 1px solid rgba(255,255,255,0.05);">
+                            <div id="desc1" style="width: 100%; display: none; margin-top: 0.8rem; margin-left: calc(24px + 1.25rem); font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; padding-top: 0.8rem; border-top: 1px solid var(--border-glass);">
                                 이번 달 마감 시, 브랜드의 다른 무드나 신제품을 다루는 다음 캠페인에 우선적으로 응모하겠습니다.
                             </div>
-                        </div>
-                    </label>
+                        </label>
+                    </div>
 
-                    <label class="option-card" onclick="toggleAccordion('desc2')">
-                        <input type="checkbox" id="term_pool2">
-                        <div class="option-content" style="flex-wrap: wrap;">
+                    <div class="option-card" style="cursor: default;">
+                        <label class="option-content" style="flex-wrap: wrap; cursor: pointer;">
+                            <input type="checkbox" id="term_pool2">
                             <div class="indicator"></div>
-                            <div style="flex:1;">
-                                <div class="option-title text-accent" style="font-size: 0.95rem;">[선택] 무신사 PB 및 SIRIAI 파트너십 후보 풀 등록</div>
+                            <div class="accordion-header">
+                                <span class="option-title text-accent" style="font-size: 0.95rem; margin-bottom: 0;">[선택] 무신사 PB 및 SIRIAI 후보 풀 등록</span>
+                                <button type="button" class="accordion-toggle-btn" onclick="toggleAccordion(event, 'desc2', this)">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px; height:16px;"><path d="M6 9l6 6 6-6"/></svg>
+                                </button>
                             </div>
-                            <div style="color: var(--text-muted);">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px; height:16px;"><path d="M6 9l6 6 6-6"/></svg>
-                            </div>
-                            <div id="desc2" style="width: 100%; display: none; margin-top: 0.8rem; margin-left: calc(24px + 1.25rem); font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; padding-top: 0.8rem; border-top: 1px solid rgba(255,255,255,0.05);">
+                            <div id="desc2" style="width: 100%; display: none; margin-top: 0.8rem; margin-left: calc(24px + 1.25rem); font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; padding-top: 0.8rem; border-top: 1px solid var(--border-glass);">
                                 향후 SIRIAI가 운영하는 다국가/다양한 브랜드 캠페인 제안을 최우선적으로 받아보겠습니다.
                             </div>
-                        </div>
-                    </label>
+                        </label>
+                    </div>
+
                 </div>
 
                 <div class="btn-wrapper">
@@ -726,7 +743,7 @@
         <!-- STEP 5: Success -->
         <div class="form-step" id="step-5">
             <div class="glass-panel" style="text-align: center; padding: 4rem 2rem;">
-                <div class="success-icon-wrapper" style="width: 80px; height: 80px; border-radius: 50%; background: rgba(255, 51, 102, 0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; color: var(--brand-primary); box-shadow: inset 0 0 0 2px var(--brand-primary), 0 0 20px rgba(255, 51, 102, 0.3);">
+                <div class="success-icon-wrapper" style="width: 80px; height: 80px; border-radius: 50%; background: rgba(244, 48, 89, 0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; color: var(--brand-primary);">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 40px; height: 40px;">
                         <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
@@ -754,11 +771,26 @@
             const progressBar = document.getElementById('progressBar');
             if(currentStep === 0) {
                 progressBar.style.width = '0%';
+                document.getElementById('heroBanner').style.display = 'block';
             } else if (currentStep >= totalSteps) {
                 progressBar.style.width = '100%';
+                document.getElementById('heroBanner').style.display = 'none';
             } else {
                 const percentage = (currentStep / (totalSteps - 1)) * 100;
                 progressBar.style.width = percentage + '%';
+                document.getElementById('heroBanner').style.display = 'none';
+            }
+        }
+
+        function toggleAccordion(e, id, btn) {
+            e.preventDefault(); // Prevent checkbox toggle when clicking the arrow button specifically
+            const el = document.getElementById(id);
+            if (el.style.display === 'none') {
+                el.style.display = 'block';
+                btn.classList.add('open');
+            } else {
+                el.style.display = 'none';
+                btn.classList.remove('open');
             }
         }
 
@@ -807,8 +839,6 @@
                 }
             }
             else if (step === 4) {
-                const termPool1 = document.getElementById('term_pool1');
-                const termPool2 = document.getElementById('term_pool2');
                 // No validation needed since they are optional
             }
 
@@ -861,14 +891,6 @@
                 updateProgress();
                 window.scrollTo(0,0);
             }, 1200);
-        }
-        function toggleAccordion(id) {
-            const el = document.getElementById(id);
-            if (el.style.display === 'none') {
-                el.style.display = 'block';
-            } else {
-                el.style.display = 'none';
-            }
         }
     </script>
     <style>
