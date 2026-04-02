@@ -138,23 +138,22 @@
 
         /* Panel */
         .glass-panel {
-            background: var(--surface-glass);
-            border: 1px solid var(--border-glass);
-            border-radius: var(--radius-lg);
+            background: #ffffff;
+            border-radius: 20px;
             padding: 2.5rem 2rem;
             width: 100%;
-            box-shadow: var(--shadow-soft);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.04);
             margin-bottom: 2rem;
         }
         
         /* Information Card inside Panel */
         .info-card {
-            background: #ffffff;
-            border: 1px solid var(--border-glass);
-            border-radius: var(--radius-md);
+            background: #f9fafb;
+            border-radius: 16px;
             padding: 1.5rem;
             margin-bottom: 1.2rem;
             transition: var(--transition-smooth);
+            border: 1px solid transparent;
         }
         .info-card h3 {
             font-size: 1.05rem;
@@ -307,19 +306,44 @@
             align-items: flex-start;
             background: #ffffff;
             border: 1px solid var(--border-glass);
-            border-radius: var(--radius-md);
+            border-radius: 16px;
             padding: 1.25rem;
-            transition: var(--transition-smooth);
+            transition: all 0.2s ease;
         }
         
         .option-card input:not(:checked) + .option-content:hover {
             border-color: #bbbbbb;
+            background: #fdfdfd;
         }
 
         .option-card input:checked + .option-content {
             border-color: var(--brand-primary);
-            background: #ffffff;
+            background: #f9f9f9;
             box-shadow: 0 0 0 1px var(--brand-primary);
+        }
+
+        /* Nudge / Recommendation Card */
+        .option-card.recommended .option-content {
+            background: #fff8fa;
+            border-color: #ffdae2;
+        }
+        
+        .option-card.recommended input:checked + .option-content {
+            background: #fff0f3;
+            border-color: var(--brand-accent);
+            box-shadow: 0 0 0 1px var(--brand-accent);
+        }
+        
+        .badge-recommended {
+            display: inline-block;
+            background: var(--brand-accent);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            margin-left: 0.4rem;
+            vertical-align: middle;
         }
 
         /* Radio Indicator */
@@ -350,24 +374,32 @@
 
         /* Checkbox Indicator */
         .indicator-check {
-            width: 20px;
-            height: 20px;
-            border-radius: 4px;
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
             border: 1.5px solid #cccccc;
             margin-right: 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            margin-top: 2px;
+            margin-top: 1px;
             transition: var(--transition-smooth);
         }
 
-        .option-card input[type="checkbox"]:checked + .option-content .indicator-check {
+        .option-card input[type="checkbox"]:checked + .option-content .indicator-check,
+        .accordion-header input[type="checkbox"]:checked + .indicator-check {
             background: var(--brand-primary);
             border-color: var(--brand-primary);
         }
-        .option-card input[type="checkbox"]:checked + .option-content .indicator-check::after {
+        .option-card.recommended input[type="checkbox"]:checked + .option-content .indicator-check,
+        .accordion-item.recommended .accordion-header input[type="checkbox"]:checked + .indicator-check {
+            background: var(--brand-accent);
+            border-color: var(--brand-accent);
+        }
+        
+        .option-card input[type="checkbox"]:checked + .option-content .indicator-check::after,
+        .accordion-header input[type="checkbox"]:checked + .indicator-check::after {
             content: '';
             width: 5px;
             height: 10px;
@@ -481,15 +513,23 @@
         /* Accordion Customization */
         .accordion-item {
             border: 1px solid var(--border-glass);
-            border-radius: var(--radius-md);
+            border-radius: 16px;
             margin-bottom: 0.8rem;
             background: #ffffff;
-            overflow: hidden;
-            transition: var(--transition-smooth);
+            transition: all 0.2s ease;
+        }
+        
+        .accordion-item.recommended {
+            background: #fff8fa;
+            border-color: #ffdae2;
         }
         
         .accordion-item:focus-within {
             border-color: #bbbbbb;
+        }
+        
+        .accordion-item.recommended:focus-within {
+            border-color: var(--brand-accent);
         }
 
         .accordion-header {
@@ -654,13 +694,13 @@
                         </div>
                     </label>
 
-                    <label class="option-card">
+                    <label class="option-card recommended">
                         <input type="radio" name="campaign_type" value="ALL">
                         <div class="option-content">
                             <div class="indicator-radio"></div>
                             <div class="option-text-wrap">
-                                <span class="option-title">캠페인 모두 지원 (우선 배정 대상)</span>
-                                <span class="option-desc">가장 잘 어울리는 캠페인에 유동적으로 배정해 드립니다.</span>
+                                <span class="option-title" style="color: var(--brand-accent);">캠페인 모두 지원 <span class="badge-recommended">추천</span></span>
+                                <span class="option-desc">크리에이터님과 가장 잘 어울리는 캠페인에 유동적으로 배정해 드립니다. 가장 높은 확률로 선정될 수 있습니다.</span>
                             </div>
                         </div>
                     </label>
@@ -779,17 +819,32 @@
                         </div>
                     </div>
 
-                    <div class="accordion-item">
+                    <div class="accordion-item recommended">
                         <label class="accordion-header">
-                            <input type="checkbox" id="term_pool2">
+                            <input type="checkbox" id="term_pool2" checked>
                             <div class="indicator-check"></div>
-                            <span class="option-title" style="margin-top:1px;">무신사 PB 및 전체 협업 풀 등록</span>
-                            <button type="button" class="accordion-toggle-btn" onclick="toggleAccordion(event, 'desc2', this)" aria-label="설명 보기">
+                            <span class="option-title" style="margin-top:2px; color: var(--brand-accent);">[선택] MUSINSA PB & SIRIAI 파트너십 후보 풀 등록 <span class="badge-recommended">추천</span></span>
+                            <button type="button" class="accordion-toggle-btn open" onclick="toggleAccordion(event, 'desc2', this)" aria-label="설명 보기">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px; height:16px;"><path d="M6 9l6 6 6-6"/></svg>
                             </button>
                         </label>
-                        <div id="desc2" class="accordion-body">
-                            향후 SIRIAI가 운영하는 다국적/다양한 브랜드 캠페인 제안을 최우선적으로 받아보겠습니다.
+                        <div id="desc2" class="accordion-body" style="display: block;">
+                            <div style="background: #ffffff; border-radius: 8px; padding: 1.2rem; margin-top: 0.5rem; border: 1px solid #ffdae2; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
+                                <p style="margin-bottom: 1rem; color: #333;">SIRIAI는 오드타입 외에도 <strong>무신사 운영 브랜드 및 다양한 패션·뷰티 브랜드 캠페인</strong>을 운영하고 있습니다.</p>
+                                <p style="margin-bottom: 1.2rem; color: #333;">이번 캠페인의 선정 여부와 관계없이, 향후 브랜드에 적합하다고 판단될 경우 우선적으로 제안을 드릴 수 있습니다.</p>
+                                
+                                <div style="font-weight: 600; color: #111; margin-bottom: 0.5rem;">협업 무신사 PB 및 SIRIAI 파트너십 브랜드</div>
+                                <ul style="list-style-type: disc; margin-left: 1.2rem; margin-bottom: 1.2rem; color: #555;">
+                                    <li>아이디병원(성형외과, 피부과)</li>
+                                    <li>오드타입</li>
+                                    <li>29어퍼스트로피(29')</li>
+                                    <li>노더럽(NOTHELOVE)</li>
+                                    <li>위찌</li>
+                                    <li>외 SIRIAI 파트너십 패션·뷰티 브랜드</li>
+                                </ul>
+                                
+                                <p style="font-size: 0.8rem; color: #888;">※ 본 항목은 이번 캠페인 선정 여부와 무관합니다.</p>
+                            </div>
                         </div>
                     </div>
 
@@ -861,14 +916,39 @@
 
         // Make checkbox toggle also open/close the accordion automatically occasionally or simply highlight it
         document.querySelectorAll('.accordion-header input').forEach(inp => {
-            inp.addEventListener('change', function() {
-                const accordionItem = this.closest('.accordion-item');
-                if (this.checked) {
+            // Apply initial state styling if checked by default
+            const accordionItem = inp.closest('.accordion-item');
+            if (inp.checked) {
+                if(accordionItem.classList.contains('recommended')){
+                    accordionItem.style.borderColor = 'var(--brand-accent)';
+                    accordionItem.style.boxShadow = '0 0 0 1px var(--brand-accent)';
+                    accordionItem.style.background = '#fff0f3';
+                } else {
                     accordionItem.style.borderColor = 'var(--brand-primary)';
                     accordionItem.style.boxShadow = '0 0 0 1px var(--brand-primary)';
+                }
+            }
+
+            inp.addEventListener('change', function() {
+                if (this.checked) {
+                    if(accordionItem.classList.contains('recommended')){
+                        accordionItem.style.borderColor = 'var(--brand-accent)';
+                        accordionItem.style.boxShadow = '0 0 0 1px var(--brand-accent)';
+                        accordionItem.style.background = '#fff0f3';
+                    } else {
+                        accordionItem.style.borderColor = 'var(--brand-primary)';
+                        accordionItem.style.boxShadow = '0 0 0 1px var(--brand-primary)';
+                    }
                 } else {
-                    accordionItem.style.borderColor = 'var(--border-glass)';
-                    accordionItem.style.boxShadow = 'none';
+                    if(accordionItem.classList.contains('recommended')){
+                        accordionItem.style.borderColor = '#ffdae2';
+                        accordionItem.style.boxShadow = 'none';
+                        accordionItem.style.background = '#fff8fa';
+                    } else {
+                        accordionItem.style.borderColor = 'var(--border-glass)';
+                        accordionItem.style.boxShadow = 'none';
+                        accordionItem.style.background = '#ffffff';
+                    }
                 }
             });
         });
