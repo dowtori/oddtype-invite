@@ -558,7 +558,7 @@
         <p class="field-error" id="error-address" role="alert">배송지를 입력해주세요.</p>
       </div>
       <div class="form-field">
-        <label class="form-label" for="inf_insta">인스타그램 계정 <span class="required-mark" aria-hidden="true">*</span></label>
+        <label class="form-label" for="inf_insta">인스타그램 계정(핸들로 입력) <span class="required-mark" aria-hidden="true">*</span></label>
         <input class="form-input" type="text" id="inf_insta" placeholder="@username" aria-required="true">
         <p class="field-error" id="error-insta" role="alert">인스타그램 계정을 입력해주세요.</p>
       </div>
@@ -719,8 +719,22 @@ const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbxjRPvSCdXCiUqESV2y
     btn.disabled = true;
     btn.innerHTML = '<span class="spinner" aria-hidden="true"></span>제출 중...';
 
-    let insta = document.getElementById('inf_insta').value.trim();
-    if (insta && !insta.startsWith('@')) insta = '@' + insta;
+    let insta = (function normalizeInsta(raw) {
+      let v = raw.trim();
+      if (!v) return v;
+      // URL에서 username 추출
+      if (v.includes('instagram.com')) {
+        try {
+          if (!v.startsWith('http')) v = 'https://' + v;
+          const parts = new URL(v).pathname.split('/').filter(Boolean);
+          const skip = ['p','reel','reels','tv','stories','explore'];
+          v = (parts.length && !skip.includes(parts[0])) ? parts[0] : (parts[1] || v);
+        } catch(e) {}
+      }
+      // @ 제거 후 표준 URL로 정규화
+      v = v.replace(/^@+/, '').replace(/\/$/, '').trim();
+      return v ? 'https://www.instagram.com/' + v + '/' : '';
+    })(document.getElementById('inf_insta').value);
 
     const payload = {
       campaign_type: document.querySelector('input[name="campaign_type"]:checked').value,
