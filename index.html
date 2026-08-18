@@ -625,7 +625,8 @@ const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbxjRPvSCdXCiUqESV2y
 
   // Fee tier by hostname
   const host = window.location.hostname.toLowerCase();
-  const feeLabel = host.includes('invitek') ? '200,000원'
+  const feeLabel = host.includes('invitep') ? '500,000원'
+                 : host.includes('invitek') ? '200,000원'
                  : host.includes('inviteb') ? '100,000원'
                  : '50,000원';
 
